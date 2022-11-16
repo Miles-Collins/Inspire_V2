@@ -1,6 +1,7 @@
 import { BackgroundController } from "./Controllers/BackgroundController.js";
 import { QuoteController } from "./Controllers/QuoteController.js";
 import { TimeController } from "./Controllers/TimeController.js";
+import { TodosControler } from "./Controllers/TodosController.js";
 import { ValuesController } from "./Controllers/ValuesController.js";
 import { WeatherController } from "./Controllers/WeatherController.js";
 
@@ -11,6 +12,8 @@ class App {
   quoteController = new QuoteController();
 
   weatherController = new WeatherController();
+
+  todosController = new TodosControler();
 }
 
 window["app"] = new App();

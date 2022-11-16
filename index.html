@@ -43,11 +43,56 @@
         </div>
       </div>
     </main>
+
     <footer
-      class="justify-content-center d-flex text-light footerSize fixed-bottom"
+      class="row justify-content-center text-light footerSize fixed-bottom"
     >
-      <div id="quote" class="col-6 text-center quote"></div>
+      <div id="quote" class="offset-2 col-md-8 text-center quote"></div>
+      <div class="col-md-2 text-end">
+        <button
+          class="btn btn-primary"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasRight"
+          aria-controls="offcanvasRight"
+        >
+          Todo's
+        </button>
+      </div>
     </footer>
+
+    <!-- STUB off-canvas -->
+    <div
+      class="offcanvas offcanvas-end"
+      tabindex="-1"
+      id="offcanvasRight"
+      aria-labelledby="offcanvasRightLabel"
+    >
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">
+          Offcanvas right
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <div id="todos" class="col-3"></div>
+        <div class="col-3">
+          <form
+            class="d-flex"
+            action=""
+            onsubmit="app.todosController.createTodo()"
+          >
+            <input type="text" placeholder="Write Todo..." />
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.23.0/axios.min.js"></script>
     <script
