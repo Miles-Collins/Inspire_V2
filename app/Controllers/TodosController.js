@@ -1,5 +1,6 @@
 import { appState } from "../AppState.js";
 import { todosService } from "../Services/TodosService.js";
+import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
 import { setHTML } from "../Utils/Writer.js";
 
@@ -9,7 +10,7 @@ function _drawTodos() {
   setHTML("todos", template);
 }
 
-export class TodosControler {
+export class TodosController {
   constructor() {
     this.getTodos();
     appState.on("todos", _drawTodos);
@@ -27,7 +28,15 @@ export class TodosControler {
 
   async createTodo() {
     try {
-      await todosService.createTodo();
+      // @ts-ignore
+      window.event.preventDefault();
+      // @ts-ignore
+      let form = window.event.target;
+      let todoData = getFormData(form);
+      await todosService.createTodo(todoData);
+      Pop.toast("Created A New Todo!", "success");
+      // @ts-ignore
+      form.reset();
     } catch (error) {
       console.error(error);
       // @ts-ignore
@@ -35,9 +44,9 @@ export class TodosControler {
     }
   }
 
-  async editTodo() {
+  async editTodo(id) {
     try {
-      await todosService.editTodo();
+      await todosService.editTodo(id);
     } catch (error) {
       console.error(error);
       // @ts-ignore
@@ -45,9 +54,13 @@ export class TodosControler {
     }
   }
 
-  async deleteTodo() {
+  async deleteTodo(id) {
     try {
-      await todosService.deleteTodo();
+      let yes = await Pop.confirm("are you sure you want to delete this todo?");
+      if (!yes) {
+        return;
+      }
+      await todosService.deleteTodo(id);
     } catch (error) {
       console.error(error);
       // @ts-ignore
