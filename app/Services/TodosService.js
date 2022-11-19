@@ -17,10 +17,10 @@ class TodosService {
     console.log("New todo in the appState", appState.todos);
   }
   async editTodo(id) {
-    let todo = appState.todos.find((t) => t.id == id);
-
+    // let todo = appState.todos.find((t) => t.id == id);
+    let todoIndex = appState.todos.findIndex((t) => t.id == id);
+    let todo = appState.todos[todoIndex];
     todo.completed = !todo.completed;
-    let todoIndex = appState.todos.indexOf(todo);
     // debugger;
     let res = await api.put(`/savannah/TODOS/${id}`, todo);
 

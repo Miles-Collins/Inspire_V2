@@ -12,14 +12,15 @@ class WeatherService {
   }
 
   toggleWeather() {
-    if (appState.weather.toggle == true) {
-      setHTML("weather", appState.weather.CTemplate);
-      appState.weather.toggle = !appState.weather.toggle;
-      console.log("FTemp", appState.weather);
-    } else {
-      setHTML("weather", appState.weather.FTemplate);
-      appState.weather.toggle = !appState.weather.toggle;
-    }
+    // if (appState.weather.toggle == true) {
+    //   setHTML("weather", appState.weather.CTemplate);
+    //   appState.weather.toggle = !appState.weather.toggle;
+    //   console.log("FTemp", appState.weather);
+    // } else {
+    //   setHTML("weather", appState.weather.FTemplate);
+    //   appState.weather.toggle = !appState.weather.toggle;
+    // }
+    appState.weather.toggle = !appState.weather.toggle;
   }
 }
 

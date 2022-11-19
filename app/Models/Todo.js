@@ -7,10 +7,10 @@ export class Todo {
 
   get TodoTemplate() {
     return `
-    <div class="d-flex">
+    <div class="d-flex justify-content-between">
       <input type="checkbox" ${
         this.completed ? "checked" : ""
-      } onclick="app.todosController.editTodo('${this.id}')">
+      } onclick="app.todosController.editTodo('${this.id}')"/>
       <div>${this.description}</div>
       <button class="btn btn-danger" onclick="app.todosController.deleteTodo('${
         this.id

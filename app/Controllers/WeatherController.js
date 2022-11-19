@@ -4,7 +4,12 @@ import { Pop } from "../Utils/Pop.js";
 import { setHTML } from "../Utils/Writer.js";
 
 function _drawWeather() {
-  setHTML("weather", appState.weather.FTemplate);
+  setHTML(
+    "weather",
+    appState.weather.toggle
+      ? appState.weather.FTemplate
+      : appState.weather.CTemplate
+  );
 }
 
 export class WeatherController {

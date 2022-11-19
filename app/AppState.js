@@ -7,9 +7,9 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Value').Value[]} */
   values = loadState("values", [Value]);
 
-  /** @type {import('./Models/Background').Background{}} */
+  /** @type {import('./Models/Background').Background|{}} */
   background = {};
-  /** @type {import('./Models/Quote').Quote{}} */
+  /** @type {import('./Models/Quote').Quote|{}} */
   quote = {};
   weather = {};
   todos = [];
